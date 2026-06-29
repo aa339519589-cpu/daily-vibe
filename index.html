@@ -128,6 +128,14 @@
       transform: scale(0.97);
     }
 
+    .btn.spin svg {
+      animation: spin 0.5s ease-in-out;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
     .btn svg {
       width: 16px;
       height: 16px;
@@ -219,6 +227,8 @@
 
     function refresh() {
       setQuote(randomQuote(), true);
+      refreshBtn.classList.add('spin');
+      setTimeout(() => refreshBtn.classList.remove('spin'), 500);
     }
 
     // Init
