@@ -36,6 +36,12 @@
       padding: 2rem;
       max-width: 640px;
       width: 90%;
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     .date-display {
@@ -120,6 +126,14 @@
 
     .btn:active {
       transform: scale(0.97);
+    }
+
+    .btn.spin svg {
+      animation: spin 0.5s ease-in-out;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
     }
 
     .btn svg {
@@ -213,6 +227,8 @@
 
     function refresh() {
       setQuote(randomQuote(), true);
+      refreshBtn.classList.add('spin');
+      setTimeout(() => refreshBtn.classList.remove('spin'), 500);
     }
 
     // Init
